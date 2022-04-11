@@ -1,39 +1,78 @@
+// {
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "module": "esnext",
+//     "strict": true,
+//     "jsx": "preserve",
+//     "importHelpers": true,
+//     "moduleResolution": "node",
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "sourceMap": true,
+//     "baseUrl": ".",
+//     "allowJs": true,
+//     "types": ["webpack-env"],
+//     "typeRoots": ["./node_modules/@types/", "./types"],
+//     "paths": {
+//       "@/*": [
+//         "src/*"
+//       ]
+//     },
+//     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+//   },
+//   "include": [
+//     "src/**/*.ts",
+//     "src/**/*.d.ts",
+//     "src/**/*.tsx",
+//     "src/**/*.vue",
+//     "types/shims-vue.d.ts",
+//     "types/shims-vue.d.ts"
+//   ],
+//   "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
+// }
+
 {
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "strict": true,
+    "noLib": false,
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "strictFunctionTypes": false,
+    "jsx": "preserve",
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
+    "allowJs": true, // 允许 JS
+    "sourceMap": true,
+    "esModuleInterop": true, // ES 模块互操作
+    "resolveJsonModule": true, // 解析 JSON 模块
+    "noUnusedLocals": true, // 报告未使用的局部变量的错误
+    "noUnusedParameters": true, // 报告函数中未使用参数的错误。
+    "experimentalDecorators": true,
+    "lib": ["dom", "esnext"],
+    "noImplicitAny": false, // 在某些情况下，如果不存在类型批注，则当 TypeScript 无法推断出变量的类型时，它将回退到该类型
+    "skipLibCheck": true, // 跳过库检查
+    "removeComments": true, // 删除注释
+    "types": ["webpack-env"],
+    "typeRoots": ["./node_modules/@types/", "./types", "element-plus/global"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/stores/*": ["./src/store/*"],
+      "@/views/*": ["./src/views/*"]
+    }
   },
   "include": [
+    "mock/**/*",
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "types/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
 }
