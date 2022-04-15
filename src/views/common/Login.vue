@@ -35,11 +35,16 @@
 import { ElMessage as message } from 'element-plus'
 import { defineComponent, reactive, toRefs } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Login',
   components: { User, Lock },
   setup() {
+    const store = useStore()
+    const router = useRouter()
+
     const state = reactive({
       loading: false,
       formInline: {
@@ -59,8 +64,16 @@ export default defineComponent({
         password
       }
 
-      setTimeout(() => (state.loading = false), 1500)
-      console.log(params)
+      store.dispatch('user/Login', params)
+
+      setTimeout(() => {
+        console.log(params)
+
+        state.loading = false
+
+        message.success('登录成功！')
+        router.replace('/')
+      }, 1500)
     }
 
     return {

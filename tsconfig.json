@@ -60,8 +60,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
-      "@/stores/*": ["./src/store/*"],
-      "@/views/*": ["./src/views/*"]
+      "@/store/*": ["./src/store/*"],
+      "@/views/*": ["./src/views/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/assets/*": ["./src/assets/*"]
     }
   },
   "include": [

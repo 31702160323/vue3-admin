@@ -1,19 +1,21 @@
 import { isNavigationFailure, Router } from 'vue-router'
 import NProgress from 'nprogress' // progress bar
+import 'nprogress/nprogress.css'
 import { createStorage } from '@/utils/Storage'
-import { ACCESS_TOKEN } from '@/stores/mutation-types'
+import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 const Storage = createStorage()
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const allowList = ['login', 'icons', 'error', 'error-404'] // no redirect whitelist
+const allowList = ['login'] // no redirect whitelist
 
 export function createRouterGuards(router: Router) {
   router.beforeEach((to, _from, next) => {
     NProgress.start() // start progress bar
     const token = Storage.get(ACCESS_TOKEN)
     if (token) {
+      next()
     } else {
       // not login
       if (allowList.includes(to.name as string)) {

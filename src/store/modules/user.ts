@@ -1,11 +1,13 @@
 import { createStorage } from '@/utils/Storage'
+import { ACCESS_TOKEN, CURRENT_USER } from '@/store/mutation-types'
+
 const Storage = createStorage({ storage: localStorage })
 
 export default {
   namespaced: true,
   state: {
-    token: Storage.get('ACCESS_TOKEN', ''),
-    info: Storage.get('CURRENT_USER', {})
+    token: Storage.get(ACCESS_TOKEN, ''),
+    info: Storage.get(CURRENT_USER, {})
   },
   mutations: {
     SET_TOKEN: (state, token) => {
@@ -18,9 +20,11 @@ export default {
   actions: {
     Login({ commit }, userInfo) {
       if (userInfo) {
-        commit('SET_TOKEN', 'result.token')
+        Storage.set(ACCESS_TOKEN, userInfo, 7 * 24 * 60 * 60 * 1000)
+        Storage.set(CURRENT_USER, userInfo, 7 * 24 * 60 * 60 * 1000)
+        commit('SET_TOKEN', userInfo)
         // todo
-        commit('SET_INFO', 'result')
+        commit('SET_INFO', userInfo)
       }
     }
   }

@@ -12,5 +12,8 @@ export default createStore({
   state: {},
   mutations: {},
   actions: {},
+  getters: {
+    tabsList: (state) => state['tabs-view'].tabsList
+  },
   modules: modules
 })

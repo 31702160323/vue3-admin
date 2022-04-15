@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/Home.vue'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import admin from '@/router/modules/admin'
+import system from '@/router/modules/system'
 import common from '@/router/modules/common'
 
 console.log('初始化 vue-router')
@@ -7,14 +8,19 @@ console.log('初始化 vue-router')
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Layout',
+    redirect: '/system',
+    component: () => import(/* webpackChunkName: "layout" */ '@/views/layout/index.vue'),
+    meta: {
+      title: '首页'
+    },
+    children: [...admin, ...system]
   },
   ...common
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
