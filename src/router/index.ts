@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '首页'
     },
-    children: [...admin, ...system]
+    children: [...system]
   },
   ...common
 ]
@@ -23,5 +23,9 @@ const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
+
+const layout = routes.find((item) => item.name == 'Layout')!
+layout.children = [...admin, ...system]
+router.addRoute(layout)
 
 export default router

@@ -47,7 +47,6 @@ export default defineComponent({
   border-right: none;
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
 }

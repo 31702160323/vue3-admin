@@ -1,21 +1,20 @@
 <template>
   <div>
-    <button @click="show = !show">Toggle</button>
-    <transition>
-      <p v-if="show">hello</p>
-    </transition>
+    <div v-for="(value, key) in browserInfo" :key="key">{{ key }} : {{ value }}</div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import BrowserType from '@/utils/browser-type'
 
 export default defineComponent({
   name: 'authority',
   setup() {
-    const show = ref(true)
+    // 获取浏览器信息
+    const browserInfo = ref(BrowserType('zh-cn'))
     return {
-      show
+      browserInfo
     }
   }
 })

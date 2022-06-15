@@ -2,20 +2,20 @@
   <el-container>
     <el-aside width="auto">
       <el-scrollbar>
-        <logo :collapsed="isCollapse" @click="isCollapse = !isCollapse"></logo>
-        <aside-menu :collapsed="isCollapse"></aside-menu>
+        <Logo :collapsed="isCollapse" @click="isCollapse = !isCollapse"></Logo>
+        <AsideMenu :collapsed="isCollapse"></AsideMenu>
       </el-scrollbar>
     </el-aside>
     <el-container>
       <el-header height="100px" style="padding: 0">
         <el-row style="width: 100%; height: 60px">
           <el-col :span="24">
-            <page-header></page-header>
+            <PageHeader></PageHeader>
           </el-col>
         </el-row>
         <el-row style="width: 100%; height: 60px">
           <el-col :span="24">
-            <tabs-view></tabs-view>
+            <TabsView></TabsView>
           </el-col>
         </el-row>
       </el-header>

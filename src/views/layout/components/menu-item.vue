@@ -6,13 +6,7 @@
       </el-icon>
       <span>{{ item.meta?.title }}</span>
     </template>
-    <el-menu-item-group
-      v-for="chilItem in item.children"
-      :key="chilItem.path"
-      :title="item.meta?.title"
-    >
-      <aside-menu-item :item="chilItem" />
-    </el-menu-item-group>
+    <aside-menu-item v-for="chilItem in item.children" :key="chilItem.path" :item="chilItem" />
   </el-sub-menu>
   <el-menu-item v-else :index="item.redirect || item.path">
     <el-icon>
@@ -25,20 +19,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { toRefs, defineComponent, PropType } from 'vue'
 import { Location } from '@element-plus/icons-vue'
+import { RouteRecordRaw } from 'vue-router'
 
 export default defineComponent({
   name: 'aside-menu-item',
   components: { Location },
   props: {
     item: {
-      type: Object
+      type: Object as PropType<RouteRecordRaw>,
+      required: true
     }
   },
   setup(props) {
     return {
-      ...props
+      ...toRefs(props)
     }
   }
 })
