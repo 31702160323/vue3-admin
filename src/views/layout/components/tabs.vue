@@ -37,7 +37,7 @@ export default defineComponent({
     const store = useStore()
 
     // 获取简易的路由对象
-    const getSimpleRoute = (route): any => {
+    const getSimpleRoute = (route) => {
       const { fullPath, hash, meta, name, params, path, query } = route
       return { fullPath, hash, meta, name, params, path, query }
     }
@@ -55,7 +55,7 @@ export default defineComponent({
 
     watch(
       () => route.fullPath,
-      (to, _from) => {
+      (to) => {
         if (whiteList.includes(route.name as string)) return
         state.activeKey = to
         // tabsViewMutations.addTabs(getSimpleRoute(route))

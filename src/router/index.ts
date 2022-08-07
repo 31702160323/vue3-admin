@@ -24,8 +24,10 @@ const router = createRouter({
   routes
 })
 
-const layout = routes.find((item) => item.name == 'Layout')!
-layout.children = [...admin, ...system]
-router.addRoute(layout)
+const layout = routes.find((item) => item.name == 'Layout')
+if (layout) {
+  layout.children = [...admin, ...system]
+  router.addRoute(layout)
+}
 
 export default router

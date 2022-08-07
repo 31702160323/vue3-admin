@@ -1,7 +1,7 @@
 import { isNavigationFailure, Router } from 'vue-router'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'
-import { createStorage } from '@/utils/Storage'
+import { createStorage } from '@/utils/storage'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 
 const Storage = createStorage()

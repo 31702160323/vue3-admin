@@ -1,4 +1,4 @@
-import { createStorage } from '@/utils/Storage'
+import { createStorage } from '@/utils/storage'
 import { ACCESS_TOKEN, CURRENT_USER } from '@/store/mutation-types'
 
 const Storage = createStorage({ storage: localStorage })

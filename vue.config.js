@@ -3,8 +3,8 @@
 const { defineConfig } = require("@vue/cli-service");
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
-const CopyPlugin = require("copy-webpack-plugin");
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+// const CopyPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
 const resolve = (...dir) => path.join(__dirname, ...dir);
@@ -18,11 +18,13 @@ module.exports = defineConfig({
     config.devtool = 'source-map';
     config.plugins.push(
       AutoImport({
+        dts: './types/auto-imports.d.ts',
         resolvers: [ElementPlusResolver()],
       })
     );
     config.plugins.push(
       Components({
+        dts: './types/components.d.ts',
         resolvers: [ElementPlusResolver()],
       })
     );
