@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-red-500">
     <div v-for="(value, key) in browserInfo" :key="key">{{ key }} : {{ value }}</div>
   </div>
 </template>
