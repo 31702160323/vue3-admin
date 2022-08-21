@@ -7,13 +7,13 @@
       </el-scrollbar>
     </el-aside>
     <el-container>
-      <el-header height="100px" style="padding: 0">
-        <el-row style="width: 100%; height: 60px">
+      <el-header>
+        <el-row class="w-full h-[48px]">
           <el-col :span="24">
             <PageHeader></PageHeader>
           </el-col>
         </el-row>
-        <el-row style="width: 100%; height: 60px">
+        <el-row class="w-full h-[48px]">
           <el-col :span="24">
             <TabsView></TabsView>
           </el-col>
@@ -53,6 +53,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .el-header {
   position: relative;
+  width: 100%;
+  height: 96px;
+  padding: 0;
   overflow: hidden;
   color: var(--el-text-color-primary);
   background-color: #b3c0d1;

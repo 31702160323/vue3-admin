@@ -1,10 +1,16 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import plugins from '@/plugins'
-import 'windi.css'
+import { createApp } from 'vue';
+import App from './App.vue';
+import plugins from '@/plugins';
+import 'windi.css';
 
-const app = createApp(App)
+import { ElLoading } from 'element-plus';
+import 'element-plus/es/components/loading/style/css';
+import 'element-plus/es/components/message/style/css';
 
-plugins.init(app, ['router', 'store'])
+const app = createApp(App);
 
-app.mount('#app')
+app.use(ElLoading);
+
+plugins.init(app, ['router', 'store']);
+
+app.mount('#app');
