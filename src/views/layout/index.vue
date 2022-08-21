@@ -2,7 +2,7 @@
   <el-container>
     <el-aside width="auto">
       <el-scrollbar>
-        <Logo :collapsed="isCollapse" @click="isCollapse = !isCollapse"></Logo>
+        <Logo v-model="isCollapse"></Logo>
         <AsideMenu :collapsed="isCollapse"></AsideMenu>
       </el-scrollbar>
     </el-aside>
@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
-import Logo from './components/logo.vue'
-import AsideMenu from './components/menu.vue'
-import PageHeader from './components/header.vue'
-import TabsView from './components/tabs.vue'
-import RouterTransition from '@/components/router-transition/router-transition.vue'
+import { defineComponent, reactive, toRefs } from 'vue';
+import Logo from './components/logo.vue';
+import AsideMenu from './components/menu.vue';
+import PageHeader from './components/header.vue';
+import TabsView from './components/tabs.vue';
+import RouterTransition from '@/components/router-transition/router-transition.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -41,13 +41,13 @@ export default defineComponent({
   setup() {
     const state = reactive({
       isCollapse: true
-    })
+    });
 
     return {
       ...toRefs(state)
-    }
+    };
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>

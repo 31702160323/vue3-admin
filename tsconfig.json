@@ -2,25 +2,25 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
     "strict": true,
-    "noLib": false,
-    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
-    "allowSyntheticDefaultImports": true,
-    "strictFunctionTypes": false,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "allowJs": true, // 允许 JS
-    "sourceMap": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true, // 跳过库检查
     "esModuleInterop": true, // ES 模块互操作
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "strictFunctionTypes": false,
+    "allowJs": true, // 允许 JS
     "resolveJsonModule": true, // 解析 JSON 模块
     "noUnusedLocals": true, // 报告未使用的局部变量的错误
     "noUnusedParameters": true, // 报告函数中未使用参数的错误。
-    "experimentalDecorators": true,
-    "lib": ["dom", "esnext"],
-    "noImplicitAny": false, // 在某些情况下，如果不存在类型批注，则当 TypeScript 无法推断出变量的类型时，它将回退到该类型
-    "skipLibCheck": true, // 跳过库检查
+    "experimentalDecorators": true, // 开始装饰器
+    "noImplicitAny": false, // 在某些情况下，如果不存在类型批注，则当 TypeScript
     "removeComments": true, // 删除注释
+    "baseUrl": ".",
+    "lib": ["dom", "esnext"],
     "types": ["webpack-env"],
     "typeRoots": ["./node_modules/@types/", "./types", "element-plus/global"],
     "paths": {
@@ -29,18 +29,17 @@
       "@/store/*": ["./src/store/*"],
       "@/views/*": ["./src/views/*"],
       "@/utils/*": ["./src/utils/*"],
+      "@/static/*": ["./src/static/*"],
       "@/assets/*": ["./src/assets/*"]
     }
   },
   "include": [
-    "mock/**/*",
     "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
     "src/**/*.vue",
-    "types/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
     "types/**/*.ts",
-    "types/*.ts"
+    "types/**/*.d.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.js", "**/*.md", "src/**/*.md"]
 }

@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6",
+    "@element-plus/icons-vue": "^2.0.8",
     "axios": "^0.27.2",
     "element-plus": "2.2.12",
     "nprogress": "^0.2.0",
@@ -20,8 +20,9 @@
   },
   "devDependencies": {
     "@types/webpack-env": "^1.17.0",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-plugin-typescript": "~5.0.8",
@@ -38,17 +39,17 @@
     "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^2.7.1",
-    "sass": "^1.54.3",
+    "sass": "^1.54.4",
     "sass-loader": "^13.0.2",
-    "stylelint": "^14.9.1",
+    "stylelint": "^14.10.0",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard": "^27.0.0",
     "stylelint-config-standard-scss": "^5.0.0",
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^5.0.0",
     "typescript": "~4.7.4",
     "unplugin-auto-import": "^0.11.1",
-    "unplugin-vue-components": "^0.19.6",
+    "unplugin-vue-components": "^0.22.4",
     "vue-cli-plugin-windicss": "^1.1.6"
   }
 }

@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import XTable from '@/components/XTable';
+</script>
+
 <template>
-  <div>----------</div>
+  <div>
+    <XTable />
+  </div>
 </template>
