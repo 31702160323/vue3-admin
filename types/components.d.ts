@@ -12,7 +12,4 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     XDialog: typeof import('./../src/components/XDialog/index.vue')['default']
   }
-  export interface ComponentCustomProperties {
-    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
-  }
 }
