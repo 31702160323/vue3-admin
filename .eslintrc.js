@@ -10,6 +10,9 @@ module.exports = {
     '@vue/typescript/recommended',
     './.eslintrc-auto-import.json'
   ],
+  globals: {
+    defineOptions: true
+  },
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',

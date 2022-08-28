@@ -21,16 +21,10 @@
     "removeComments": true, // 删除注释
     "baseUrl": ".",
     "lib": ["dom", "esnext"],
-    "types": ["webpack-env"],
+    "types": ["webpack-env", "unplugin-vue-define-options"],
     "typeRoots": ["./node_modules/@types/", "./types", "element-plus/global"],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/store/*": ["./src/store/*"],
-      "@/views/*": ["./src/views/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/static/*": ["./src/static/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

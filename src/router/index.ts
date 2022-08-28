@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Layout',
     redirect: '/system',
-    component: () => import(/* webpackChunkName: "layout" */ '@/views/layout/index.vue'),
+    component: () => import(/* webpackChunkName: "layout" */ '@/layout/index.vue'),
     meta: {
       title: '首页'
     },

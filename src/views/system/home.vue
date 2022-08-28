@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import XTable from '@/components/XTable';
+// import XTable from '@/components/XTable';
 import XDialog from '@/components/XDialog/index.vue';
 const show = ref(true);
-const pageSize = ref(10);
+// const pageSize = ref(10);
 
 function open() {
   console.log('open');
@@ -12,18 +12,18 @@ function close() {
   console.log('close');
 }
 
-function sizechange() {
-  console.log('size-change', pageSize.value);
-}
+// function sizechange() {
+//   console.log('size-change', pageSize.value);
+// }
 
-function currentchange() {
-  console.log('currentchange');
-}
+// function currentchange() {
+//   console.log('currentchange');
+// }
 </script>
 
 <template>
   <div>
-    <XTable
+    <!-- <XTable
       showPagination
       v-model:page-size="pageSize"
       background
@@ -35,7 +35,7 @@ function currentchange() {
       @current-change="currentchange"
     >
       1
-    </XTable>
+    </XTable> -->
     <XDialog v-model="show" @open="open" @close="close">1</XDialog>
   </div>
 </template>

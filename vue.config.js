@@ -6,12 +6,14 @@ const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const DefineOptions = require('unplugin-vue-define-options/webpack')
 // const CopyPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
 const resolve = (...dir) => path.join(__dirname, ...dir);
 
 module.exports = defineConfig({
+  publicPath: './',
   pluginOptions: {
     windicss: {
     },
@@ -61,7 +63,8 @@ module.exports = defineConfig({
         dts: './types/components.d.ts',
         dirs: ['src/components'],
         resolvers: [ElementPlusResolver()]
-      })
+      }),
+      DefineOptions()
     );
 
     if (process.env.ENV === 'production') {
