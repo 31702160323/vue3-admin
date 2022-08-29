@@ -31,6 +31,7 @@ declare module '@vue/runtime-core' {
     RouterTransition: typeof import('./../src/components/router-transition/router-transition.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
     XDialog: typeof import('./../src/components/XDialog/index.vue')['default']
+    XTerminal: typeof import('./../src/components/XTerminal/index.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

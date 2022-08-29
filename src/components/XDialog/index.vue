@@ -1,14 +1,12 @@
-<script lang="ts">
-export default {
-  name: 'XDialog'
-};
-</script>
-
 <script lang="ts" setup>
 import { ElDialog, dialogProps, dialogEmits } from 'element-plus';
 import type { DialogProps, DialogEmits } from 'element-plus';
 import 'element-plus/es/components/dialog/style/css';
 import { omit, mapValues } from 'lodash-es';
+
+defineOptions({
+  name: 'XDialog'
+});
 
 const slots = useSlots();
 const emit = defineEmits(dialogEmits);

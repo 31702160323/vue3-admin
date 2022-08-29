@@ -1,38 +1,21 @@
 <script lang="ts" setup>
-import { Terminal } from 'xterm';
-import 'xterm/css/xterm.css';
-import { FitAddon } from 'xterm-addon-fit';
+import XTerminal from '@/components/XTerminal/index.vue';
 
-const term = new Terminal({
-  cursorBlink: true
-});
-const fitAddon = new FitAddon();
-term.loadAddon(fitAddon);
-fitAddon.fit();
-window.addEventListener('resize', () => fitAddon.fit());
-
-term.onKey((e) => {
-  console.log(e);
-  if (e.domEvent.keyCode === 13) {
-    term.writeln('');
-    term.write(new Date().toTimeString());
-  } else {
-    term.write(e.key);
-  }
+defineOptions({
+  name: 'Terminal'
 });
 
-onMounted(() => {
-  const terminalDom = document.getElementById('terminal');
-  if (terminalDom) {
-    term.open(terminalDom);
-    term.write(new Date().toTimeString());
-    term.focus();
-  }
+const socket = new WebSocket(
+  'ws://localhost:3000/exec/d0909b799681bd3a25c40f2763b5f00abaa20321860ffd6ed4c883a44e9eb1e9'
+);
+
+onUnmounted(() => {
+  socket.close();
 });
 </script>
 
 <template>
   <div>
-    <div id="terminal" class="w-full"></div>
+    <XTerminal :socket="socket"></XTerminal>
   </div>
 </template>

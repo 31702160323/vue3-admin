@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { onBeforeRouteLeave } from 'vue-router'
+import { defineComponent, ref } from 'vue';
+import { onBeforeRouteUpdate } from 'vue-router';
 
 export default defineComponent({
   name: 'router-transition',
@@ -26,33 +26,33 @@ export default defineComponent({
   },
   setup() {
     // 需要缓存的路由组件
-    const keepAliveComponents = ref<string[]>([])
+    const keepAliveComponents = ref<string[]>([]);
 
     // 获取需要缓存的组件
-    onBeforeRouteLeave((to, from) => {
+    onBeforeRouteUpdate((to, from) => {
       const currentComName = from.matched.find((item) => item.name == from.name)?.components
-        ?.default.name
+        ?.default.name;
       if (
         currentComName &&
         !keepAliveComponents.value.includes(currentComName) &&
         from.meta?.keepAlive
       ) {
         // 需要缓存的组件
-        keepAliveComponents.value.push(currentComName)
+        keepAliveComponents.value.push(currentComName);
       } else if (!from.meta?.keepAlive || to.name == 'Redirect') {
         // 不需要缓存的组件
-        const index = keepAliveComponents.value.findIndex((name) => name == currentComName)
+        const index = keepAliveComponents.value.findIndex((name) => name == currentComName);
         if (index != -1) {
-          keepAliveComponents.value.splice(index, 1)
+          keepAliveComponents.value.splice(index, 1);
         }
       }
-    })
+    });
 
     return {
       keepAliveComponents
-    }
+    };
   }
-})
+});
 </script>
 
 <style scoped>

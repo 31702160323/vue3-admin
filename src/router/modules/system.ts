@@ -18,7 +18,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Terminal',
     meta: {
       icon: 'location',
-      title: '控制台'
+      title: '控制台',
+      keepAlive: true
     },
     component: () => import(/* webpackChunkName: "home" */ '@/views/system/terminal.vue')
   }
