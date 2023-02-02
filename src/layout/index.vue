@@ -69,6 +69,7 @@ export default defineComponent({
 }
 
 .el-main {
+  position: relative;
   min-height: calc(100vh - 100px);
   padding: 0;
   background-color: #f0f2f5;

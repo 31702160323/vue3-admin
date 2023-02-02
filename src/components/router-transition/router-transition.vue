@@ -1,9 +1,11 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="zoom-fade" mode="out-in" appear>
-      <keep-alive :include="keepAliveComponents" :max="10">
-        <component :is="Component" />
-      </keep-alive>
+      <div class="absolute w-full">
+        <keep-alive :include="keepAliveComponents" :max="10">
+          <component :is="Component" />
+        </keep-alive>
+      </div>
     </transition>
   </router-view>
 </template>

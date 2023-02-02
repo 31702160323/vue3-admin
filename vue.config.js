@@ -18,6 +18,7 @@ module.exports = defineConfig({
     windicss: {
     },
   },
+  parallel: false,
   chainWebpack: (config) => {
     // 配置相关loader，支持修改，添加和替换相关的loader
     config.resolve.alias.set("@", resolve("src"));
@@ -51,6 +52,7 @@ module.exports = defineConfig({
   configureWebpack: config => {
     config.devtool = 'source-map';
     config.plugins.push(
+      DefineOptions(),
       AutoImport({
         dts: './types/auto-imports.d.ts',
         resolvers: [ElementPlusResolver()],
@@ -63,8 +65,7 @@ module.exports = defineConfig({
         dts: './types/components.d.ts',
         dirs: ['src/components'],
         resolvers: [ElementPlusResolver()]
-      }),
-      DefineOptions()
+      })
     );
 
     if (process.env.ENV === 'production') {
