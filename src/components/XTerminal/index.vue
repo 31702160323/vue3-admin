@@ -16,8 +16,7 @@ const props = defineProps<{
 let term: Terminal;
 const fitAddon = new FitAddon();
 const attachAddon = new AttachAddon(props.socket);
-const resize = (size) => {
-  console.log(size);
+const resize = () => {
   fitAddon.fit();
 };
 
@@ -26,7 +25,7 @@ onMounted(() => {
   if (terminalDom) {
     term = new Terminal({
       cursorBlink: true,
-      rendererType: 'canvas', //渲染类型
+      // rendererType: 'canvas', //渲染类型
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
       fontWeight: 400,
       fontSize: 14,

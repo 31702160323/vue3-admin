@@ -69,7 +69,6 @@ export default defineComponent({
     };
 
     const removeTab = (targetName: string) => {
-      console.log(targetName);
       if (tabsList.value.length === 1) {
         return message.warning('这已经是最后一页，不能再关闭了！');
       }

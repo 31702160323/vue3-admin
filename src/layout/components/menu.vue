@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useRoute, useRouter, RouteRecordRaw } from 'vue-router'
-import AsideMenuItem from './menu-item.vue'
+import { defineComponent, ref } from 'vue';
+import { useRoute, useRouter, RouteRecordRaw } from 'vue-router';
+import AsideMenuItem from './menu-item.vue';
 export default defineComponent({
   name: 'aside-menu',
   components: { AsideMenuItem },
@@ -19,27 +19,25 @@ export default defineComponent({
     }
   },
   setup() {
-    const route = useRoute()
-    const router = useRouter()
+    const route = useRoute();
+    const router = useRouter();
 
-    const menuList = ref<RouteRecordRaw[]>([])
+    const menuList = ref<RouteRecordRaw[]>([]);
     if (router.options.routes[0].children) {
-      menuList.value = router.options.routes[0].children
+      menuList.value = router.options.routes[0].children;
     }
 
     const toPage = (path: string) => {
-      console.log(path)
-
-      if (path === route.fullPath) return
-      router.push({ path: path })
-    }
+      if (path === route.fullPath) return;
+      router.push({ path: path });
+    };
 
     return {
       menuList,
       toPage
-    }
+    };
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>

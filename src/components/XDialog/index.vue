@@ -32,7 +32,7 @@ const myProps = computed<DialogProps>(() => omit(props, 'loading'));
 
 <template>
   <div class="x-dialog">
-    <el-dialog v-bind="myProps" v-on="myEmit">
+    <el-dialog v-bind="myProps" appendToBody v-on="myEmit">
       <div
         v-loading="props.loading"
         class="flex flex-col"

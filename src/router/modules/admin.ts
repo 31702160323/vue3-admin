@@ -1,6 +1,6 @@
-import { markRaw } from 'vue'
-import { RouteRecordRaw } from 'vue-router'
-import RouterTransition from '@/components/router-transition/router-transition.vue'
+import { markRaw } from 'vue';
+import { RouteRecordRaw } from 'vue-router';
+import RouterTransition from '@/components/router-transition/router-transition.vue';
 
 /**
  * 授权就可以访问的页面
@@ -20,12 +20,13 @@ const routes: Array<RouteRecordRaw> = [
         path: '/admin/authority',
         name: 'Authority',
         meta: {
-          title: '用户'
+          title: '用户',
+          keepAlive: true
         },
         component: () => import(/* webpackChunkName: "admin" */ '@/views/admin/authority.vue')
       }
     ]
   }
-]
+];
 
-export default routes
+export default routes;

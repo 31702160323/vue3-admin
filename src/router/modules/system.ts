@@ -9,7 +9,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'System',
     meta: {
       icon: 'location',
-      title: '首页'
+      title: '首页',
+      keepAlive: true
     },
     component: () => import(/* webpackChunkName: "home" */ '@/views/system/home.vue')
   },
