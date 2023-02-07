@@ -1,3 +1,7 @@
+import { useKeepAliveCache } from '@/hooks/useKeepAliveCache';
+
+const { removeKeepAliveCache, resetKeepAliveCache } = useKeepAliveCache();
+
 export default {
   namespaced: true,
   state: {
@@ -12,6 +16,7 @@ export default {
       // 添加标签页
       const isExists = state.tabsList.some((item) => item.fullPath == route.fullPath);
       if (!isExists) {
+        resetKeepAliveCache(route.name);
         state.tabsList.push(route);
       }
       return true;
@@ -32,7 +37,13 @@ export default {
     },
     closeCurrentTabs(state, fullPath) {
       // 关闭当前页
-      const index = state.tabsList.findIndex((item) => item.fullPath == fullPath);
+      const index = state.tabsList.findIndex((item) => {
+        if (item.fullPath === fullPath) {
+          removeKeepAliveCache(item.name);
+          return true;
+        }
+        return false;
+      });
       state.tabsList.splice(index, 1);
     },
     closeAllTabs(state) {
