@@ -11,7 +11,7 @@
     <el-tab-pane
       v-for="pageItem in tabsList"
       :key="pageItem.fullPath"
-      :label="pageItem.meta.title"
+      :label="pageItem.meta?.title"
       :name="pageItem.fullPath"
     >
     </el-tab-pane>
@@ -21,7 +21,8 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import type { RouteLocationRaw } from 'vue-router';
+import { useTabsViewStore } from '@/store/tabs-view';
 import { ElMessage as message } from 'element-plus';
 
 export default defineComponent({
@@ -34,7 +35,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const store = useStore();
+    const store = useTabsViewStore();
 
     // 获取简易的路由对象
     const getSimpleRoute = (route) => {
@@ -43,9 +44,9 @@ export default defineComponent({
     };
 
     // 初始化标签页
-    store.commit('tabs-view/init', [getSimpleRoute(route)]);
+    store.init([getSimpleRoute(route)]);
 
-    const tabsList = computed(() => store.getters.tabsList);
+    const tabsList = computed(() => store.tabsList);
 
     const state = reactive({
       activeKey: route.fullPath
@@ -59,7 +60,7 @@ export default defineComponent({
         if (whiteList.includes(route.name as string)) return;
         state.activeKey = to;
         // tabsViewMutations.addTabs(getSimpleRoute(route))
-        store.commit('tabs-view/addTabs', getSimpleRoute(route));
+        store.addTabs(getSimpleRoute(route));
       },
       { immediate: true }
     );
@@ -72,13 +73,13 @@ export default defineComponent({
       if (tabsList.value.length === 1) {
         return message.warning('这已经是最后一页，不能再关闭了！');
       }
-      store.commit('tabs-view/closeCurrentTabs', targetName);
+      store.closeCurrentTabs(targetName);
 
       // 如果关闭的是当前页
       if (state.activeKey === targetName) {
         const currentRoute = tabsList.value[Math.max(0, tabsList.value.length - 1)];
-        state.activeKey = currentRoute.fullPath;
-        router.push(currentRoute);
+        state.activeKey = currentRoute.fullPath as string;
+        router.push(currentRoute as RouteLocationRaw);
       }
     };
 

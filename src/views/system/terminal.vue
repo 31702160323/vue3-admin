@@ -10,7 +10,6 @@ const socket = new WebSocket(
 );
 
 onUnmounted(() => {
-  console.log('onUnmounted');
   socket.close();
 });
 </script>

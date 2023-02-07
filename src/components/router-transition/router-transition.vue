@@ -31,8 +31,6 @@ export default defineComponent({
 
     // 获取需要缓存的组件
     onBeforeRouteUpdate((to, from) => {
-      console.log(excludes);
-
       const currentComName = from.matched.find((item) => item.name == from.name)?.components
         ?.default.name;
       if (currentComName && !keepAliveComponents.includes(currentComName) && from.meta?.keepAlive) {

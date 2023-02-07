@@ -46,7 +46,6 @@ specifiers:
   vue: ^3.2.47
   vue-cli-plugin-windicss: ^1.1.6
   vue-router: ^4.1.6
-  vuex: ^4.1.0
   webpack-bundle-analyzer: ^4.7.0
   xterm: ^5.1.0
   xterm-addon-attach: ^0.8.0
@@ -63,7 +62,6 @@ dependencies:
   pinia: 2.0.30_hmuptsblhheur2tugfgucj7gc4
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
-  vuex: 4.1.0_vue@3.2.47
   xterm: 5.1.0
   xterm-addon-attach: 0.8.0_xterm@5.1.0
   xterm-addon-fit: 0.7.0_xterm@5.1.0
@@ -8620,15 +8618,6 @@ packages:
       '@vue/runtime-dom': 3.2.47
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
-
-  /vuex/4.1.0_vue@3.2.47:
-    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      '@vue/devtools-api': 6.5.0
-      vue: 3.2.47
-    dev: false
 
   /watchpack/2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}

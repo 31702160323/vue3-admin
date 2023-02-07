@@ -19,10 +19,10 @@
     "experimentalDecorators": true, // 开始装饰器
     "noImplicitAny": false, // 在某些情况下，如果不存在类型批注，则当 TypeScript
     "removeComments": true, // 删除注释
-    "baseUrl": ".",
+    "baseUrl": "./",
     "lib": ["dom", "esnext"],
     "types": ["webpack-env", "unplugin-vue-define-options"],
-    "typeRoots": ["./node_modules/@types/", "./types", "element-plus/global"],
+    "typeRoots": ["./node_modules/@types/", "./types", "./types/", "element-plus/global"],
     "paths": {
       "@/*": ["./src/*"]
     }

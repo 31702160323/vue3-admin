@@ -1,4 +1,5 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import admin from '@/router/modules/admin';
 import system from '@/router/modules/system';
 import common from '@/router/modules/common';

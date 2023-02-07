@@ -32,19 +32,19 @@
 </template>
 
 <script lang="ts">
-import 'element-plus/es/components/message/style/css'
-import { ElMessage } from 'element-plus'
-import { defineComponent, reactive, toRefs } from 'vue'
-import { User, Lock } from '@element-plus/icons-vue'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import 'element-plus/es/components/message/style/css';
+import { ElMessage } from 'element-plus';
+import { defineComponent, reactive, toRefs } from 'vue';
+import { User, Lock } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/store/user';
 
 export default defineComponent({
   name: 'Login',
   components: { User, Lock },
   setup() {
-    const store = useStore()
-    const router = useRouter()
+    const store = useUserStore();
+    const router = useRouter();
 
     const state = reactive({
       loading: false,
@@ -52,37 +52,37 @@ export default defineComponent({
         username: '',
         password: ''
       }
-    })
+    });
 
     const handleSubmit = async () => {
-      const { username, password } = state.formInline
+      const { username, password } = state.formInline;
       if (username.trim() == '' || password.trim() == '')
-        return ElMessage.warning('用户名或密码不能为空！')
-      state.loading = true
-      console.log(state.formInline)
+        return ElMessage.warning('用户名或密码不能为空！');
+      state.loading = true;
+      console.log(state.formInline);
       const params = {
         username,
         password
-      }
+      };
 
-      store.dispatch('user/Login', params)
+      store.Login(params);
 
       setTimeout(() => {
-        console.log(params)
+        console.log(params);
 
-        state.loading = false
+        state.loading = false;
 
-        ElMessage.success('登录成功！')
-        router.replace('/')
-      }, 1500)
-    }
+        ElMessage.success('登录成功！');
+        router.replace('/');
+      }, 1500);
+    };
 
     return {
       ...toRefs(state),
       handleSubmit
-    }
+    };
   }
-})
+});
 </script>
 
 <style lang="scss" scoped>

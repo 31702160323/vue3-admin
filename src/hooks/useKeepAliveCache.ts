@@ -1,19 +1,18 @@
 import { ref } from 'vue';
+import type { RouteRecordName } from 'vue-router';
 
 export const excludes = ref<string[]>([]);
 
 export function useKeepAliveCache() {
-  const removeKeepAliveCache = function (name?: string) {
+  const removeKeepAliveCache = function (name?: RouteRecordName) {
     if (name) {
-      excludes.value.push(name);
+      excludes.value.push(name as string);
     }
-    console.log(excludes.value, 'remove');
   };
-  const resetKeepAliveCache = function (name?: string) {
+  const resetKeepAliveCache = function (name?: RouteRecordName) {
     if (name) {
       excludes.value = excludes.value.filter((item) => item !== name);
     }
-    console.log(excludes.value, 'reset');
   };
   return {
     removeKeepAliveCache,

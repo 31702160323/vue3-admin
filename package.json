@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -18,7 +19,6 @@
     "pinia": "^2.0.30",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
-    "vuex": "^4.1.0",
     "xterm": "^5.1.0",
     "xterm-addon-attach": "^0.8.0",
     "xterm-addon-fit": "^0.7.0"
