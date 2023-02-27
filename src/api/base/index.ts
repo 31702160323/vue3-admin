@@ -1,4 +1,4 @@
-import { request, BaseResponse } from '@/utils/request'
+import { request, BaseResponse } from '@/utils/request';
 
 /**
  * @description 登录
@@ -10,7 +10,7 @@ export function login(data: API.LoginParams) {
     url: 'base/login',
     method: 'POST',
     data
-  })
+  });
 }
 
 export function getImageCaptcha(params?: API.CaptchaParams) {
@@ -18,5 +18,12 @@ export function getImageCaptcha(params?: API.CaptchaParams) {
     url: 'captcha/img',
     method: 'get',
     params
-  })
+  });
+}
+
+export function getContainer() {
+  return request({
+    url: '/docker/container',
+    method: 'get'
+  });
 }

@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import XTable from '@/components/XTable';
 import XDialog from '@/components/XDialog/index.vue';
+import { getContainer } from '@/api/base';
 const show = ref(false);
 const pageSize = ref(10);
 
 defineOptions({
   name: 'Home'
 });
-
+getContainer();
 function open() {
   // console.log('open');
 }
@@ -17,11 +18,11 @@ function close() {
 }
 
 function sizechange() {
-  // console.log('size-change', pageSize.value);
+  console.log('size-change', pageSize.value);
 }
 
 function currentchange() {
-  // console.log('currentchange');
+  console.log('currentchange');
 }
 </script>
 

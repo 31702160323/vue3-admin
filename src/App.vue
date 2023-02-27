@@ -1,8 +1,15 @@
 <template>
-  <router-view v-slot="{ Component }">
-    <component :is="Component" />
-  </router-view>
+  <el-config-provider :locale="zhCn">
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </el-config-provider>
 </template>
+
+<script lang="ts" setup>
+import { ElConfigProvider } from 'element-plus';
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
+</script>
 
 <style lang="scss">
 * {

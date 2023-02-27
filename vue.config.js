@@ -19,12 +19,23 @@ module.exports = defineConfig({
     },
   },
   parallel: false,
+  devServer: {
+    proxy: {
+      '/docker': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      }
+    },
+    https: true
+  },
   chainWebpack: (config) => {
     // 配置相关loader，支持修改，添加和替换相关的loader
     config.resolve.alias.set("@", resolve("src"));
 
     config.resolve.extensions.add(...['.js', '.vue', '.json', '.ts', '.tsx']);
 
+    config.plugins.delete('preload') // TODO: need test
+    config.plugins.delete('prefetch') // TODO: need test
     // 优化二次启动速度
     config.mode('production');
     config.cache({
@@ -47,6 +58,32 @@ module.exports = defineConfig({
         args[0].terserOptions.compress['pure_funcs'] = ['console.log', 'console.debug'];
         return args;
       });
+
+      config
+        .optimization.splitChunks({
+          chunks: 'all',
+          cacheGroups: {
+            libs: {
+              name: 'chunk-libs',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 10,
+              chunks: 'initial' // only package third parties that are initially dependent
+            },
+            elementUI: {
+              name: 'chunk-elementUI', // split elementUI into a single package
+              priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+              test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
+            },
+            commons: {
+              name: 'chunk-commons',
+              test: resolve('src/components'), // can customize your rules
+              minChunks: 3, //  minimum common number
+              priority: 5,
+              reuseExistingChunk: true
+            }
+          }
+        })
+      config.optimization.runtimeChunk('single')
     }
   },
   configureWebpack: config => {
@@ -67,6 +104,12 @@ module.exports = defineConfig({
         resolvers: [ElementPlusResolver()]
       })
     );
+
+    // 打包文件大小配置
+    config.performance = {
+      maxAssetSize: 30000000,
+      maxEntrypointSize: 10000000
+    }
 
     if (process.env.ENV === 'production') {
       config.plugins.push(

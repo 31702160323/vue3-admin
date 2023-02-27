@@ -23,6 +23,16 @@ const routes: Array<RouteRecordRaw> = [
       keepAlive: true
     },
     component: () => import(/* webpackChunkName: "home" */ '@/views/system/terminal.vue')
+  },
+  {
+    path: '/mediapipe',
+    name: 'Mediapipe',
+    meta: {
+      icon: 'location',
+      title: 'Mediapipe',
+      keepAlive: true
+    },
+    component: () => import(/* webpackChunkName: "home" */ '@/views/common/mediapipe.vue')
   }
 ];
 
