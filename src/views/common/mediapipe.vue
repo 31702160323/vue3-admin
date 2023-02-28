@@ -23,8 +23,8 @@ function init() {
     locateFile: (file) => {
       // return `/poseFile/${file}`  加载本地文件
       console.log('---------', file);
-
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+      return `https://192.168.31.149:8080/${file}`;
+      // return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
     }
   });
   pose.setOptions({
